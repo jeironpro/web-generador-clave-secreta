@@ -227,6 +227,13 @@
         cb.addEventListener('change', generateAndDisplay);
     });
 
+    /* Actualiza el anyo de vencimiento de la tarjeta: anyo actual + 2 */
+    var expiryEl = document.getElementById('cardExpiry');
+    if (expiryEl) {
+        var year = new Date().getFullYear() + 2;
+        expiryEl.textContent = '12/' + year.toString().slice(-2);
+    }
+
     /* Inicializa la aplicacion con una clave por defecto */
     generateAndDisplay();
 })();
