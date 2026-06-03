@@ -425,10 +425,15 @@ input[type="range"]::-moz-range-thumb {
     z-index: 100;
     pointer-events: none;
     white-space: nowrap;
-    max-width: 90vw;
 }
 
 /* Estado visible: entra desde abajo */
+.toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Estado visible: entra desde arriba */
 .toast.visible {
     opacity: 1;
     transform: translateX(-50%) translateY(0);

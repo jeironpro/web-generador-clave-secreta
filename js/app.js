@@ -98,7 +98,7 @@
         toastTimer = setTimeout(function () { toast.classList.remove('visible'); }, 2000);
     }
 
-    /* Copia texto al portapapeles usando execCommand para evitar el toast nativo del navegador en movil */
+    /* Copia texto al portapapeles usando execCommand para evitar toast nativo en movil */
     function copyToClipboard(text) {
         var ta = document.createElement('textarea');
         ta.value = text;
@@ -200,7 +200,7 @@
         currentKey = key;
         renderKey(key);
         updateStrength(getCharsetSize(opts), opts.length);
-        /* Si auto-copy esta activo, copia sin mostrar notificacion */
+        /* Si auto-copia esta activo, copia al portapapeles */
         if (autoCopy.checked) {
             copyToClipboard(key);
         }
