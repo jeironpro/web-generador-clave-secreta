@@ -409,7 +409,7 @@ input[type="range"]::-moz-range-thumb {
 /* Aparece desde abajo centrado, se desvanece tras 2s */
 .toast {
     position: fixed;
-    bottom: var(--space-6);
+    bottom: var(--space-16);
     left: 50%;
     transform: translateX(-50%) translateY(100px);
     padding: var(--space-3) var(--space-5);
@@ -424,6 +424,8 @@ input[type="range"]::-moz-range-thumb {
     transition: all var(--transition-normal);
     z-index: 100;
     pointer-events: none;
+    white-space: nowrap;
+    max-width: 90vw;
 }
 
 /* Estado visible: entra desde abajo */

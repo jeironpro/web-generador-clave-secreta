@@ -98,27 +98,20 @@
         toastTimer = setTimeout(function () { toast.classList.remove('visible'); }, 2000);
     }
 
-    /* Copia texto al portapapeles con fallback para navegadores antiguos */
+    /* Copia texto al portapapeles usando execCommand para evitar el toast nativo del navegador en movil */
     function copyToClipboard(text) {
-        if (!navigator.clipboard) {
-            /* Fallback: crea un textarea temporal y ejecuta copy */
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            ta.style.position = 'fixed';
-            ta.style.opacity = '0';
-            document.body.appendChild(ta);
-            ta.select();
-            try { document.execCommand('copy'); } catch (e) { }
-            document.body.removeChild(ta);
-            showToast('Copiada al portapapeles', 'success');
-            return;
-        }
-        /* API moderna de portapapeles */
-        navigator.clipboard.writeText(text).then(function () {
-            showToast('Copiada al portapapeles', 'success');
-        }).catch(function () {
-            showToast('No se pudo copiar', 'error');
-        });
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        ta.style.top = '-9999px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, text.length);
+        try { document.execCommand('copy'); } catch (e) { }
+        document.body.removeChild(ta);
+        showToast('Copiada al portapapeles', 'success');
     }
 
     /* ─── Referencias al DOM ─── */
